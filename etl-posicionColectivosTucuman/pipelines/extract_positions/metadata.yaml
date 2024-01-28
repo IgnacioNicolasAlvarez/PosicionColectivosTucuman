@@ -1,0 +1,94 @@
+blocks:
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: transformers/transform_addtimecolumns.py
+  downstream_blocks:
+  - save_posiciones
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: transform_addtimecolumns
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - extract_positions
+  uuid: transform_addtimecolumns
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - extract_positions
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_lines
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_lines
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - transform_addtimecolumns
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: extract_positions
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - load_lines
+  uuid: extract_positions
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: save_posiciones
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_addtimecolumns
+  uuid: save_posiciones
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-01-28 21:58:33.097981+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: local_python
+extensions: {}
+name: extract positions
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2024-01-28 23:05:47'
+uuid: extract_positions
+variables_dir: /home/src/mage_data/etl-posicionColectivosTucuman
+widgets: []
